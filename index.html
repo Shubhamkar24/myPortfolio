@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative UI/UX Designer Portfolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #6C4DF6;
+            --secondary: #F4C518;
+            --dark: #1A1A2E;
+            --light: #F8F9FA;
+            --accent: #FF4D4D;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(108, 77, 246, 0.2);
+            z-index: 0;
+        }
+        
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -100px;
+        }
+        
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -50px;
+            left: -50px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-image {
+            transition: all 0.5s ease;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .skill-bar {
+            position: relative;
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 1.5s ease;
+            width: 0;
+        }
+        
+        .progress-90 { width: 90%; }
+        .progress-85 { width: 85%; }
+        .progress-80 { width: 80%; }
+        .progress-75 { width: 75%; }
+        
+        .contact-input {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .contact-input:focus {
+            border-bottom-color: var(--primary);
+        }
+        
+        .cursor {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--primary);
+            mix-blend-mode: multiply;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 999;
+            transition: transform 0.2s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .cursor {
+                display: none;
+            }
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full py-6 px-4 md:px-12 lg:px-24 bg-white bg-opacity-90 backdrop-filter backdrop-blur-sm z-50">
+        <div class="flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold gradient-text">DESIGNER.</a>
+            <div class="hidden md:flex space-x-12">
+                <a href="#home" class="nav-link text-lg font-medium">Home</a>
+                <a href="#about" class="nav-link text-lg font-medium">About</a>
+                <a href="#skills" class="nav-link text-lg font-medium">Skills</a>
+                <a href="#work" class="nav-link text-lg font-medium">Work</a>
+                <a href="#contact" class="nav-link text-lg font-medium">Contact</a>
+            </div>
+            <button class="md:hidden text-2xl">☰</button>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero flex items-center px-4 md:px-12 lg:px-24">
+        <div class="hero-bg"></div>
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        
+        <div class="hero-content max-w-4xl">
+            <h4 class="text-lg md:text-xl text-gray-600 mb-4">UI/UX & Product Designer</h4>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+                I design <span class="gradient-text">digital experiences</span> that people love
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl">
+                Crafting meaningful digital solutions with a focus on user-centered design and beautiful interfaces.
+            </p>
+            <div class="flex space-x-4">
+                <a href="#work" class="px-8 py-3 bg-gradient-to-r from-[#6C4DF6] to-[#FF4D4D] text-white rounded-full font-medium hover:shadow-lg transition-all">
+                    View My Work
+                </a>
+                <a href="#contact" class="px-8 py-3 border-2 border-[#6C4DF6] text-[#6C4DF6] rounded-full font-medium hover:bg-[#6C4DF6] hover:text-white transition-all">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 13L12 18L17 13M7 6L12 11L17 6" stroke="#6C4DF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 md:px-12 lg:px-24 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="floating-element">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7b4fd835-5072-48e8-8582-26ed61936437.png" alt="Portrait of the designer showing creative workspace with modern aesthetics" class="rounded-xl shadow-2xl w-full" />
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-[#F4C518] rounded-xl -z-10"></div>
+                </div>
+                
+                <div class="w-full md:w-1/2">
+                    <h4 class="text-lg text-[#6C4DF6] mb-2">WHO AM I?</h4>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
+                    <p class="text-gray-600 mb-6">
+                        I'm a passionate UI/UX designer with 5+ years of experience creating digital products that are both beautiful and functional. My approach combines user-centered design principles with a keen eye for aesthetics.
+                    </p>
+                    <p class="text-gray-600 mb-8">
+                        I specialize in creating intuitive interfaces that solve real problems while providing delightful interactions. My process begins with understanding user needs and ends with pixel-perfect implementations.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="px-4 py-2 bg-gray-100 rounded-full flex items-center">
+                            <span class="w-2 h-2 bg-[#6C4DF6] rounded-full mr-2"></span>
+                            <span>UI Design</span>
+                        </div>
+                        <div class="px-4 py-2 bg-gray-100 rounded-full flex items-center">
+                            <span class="w-2 h-2 bg-[#FF4D4D] rounded-full mr-2"></span>
+                            <span>UX Research</span>
+                        </div>
+                        <div class="px-4 py-2 bg-gray-100 rounded-full flex items-center">
+                            <span class="w-2 h-2 bg-[#F4C518] rounded-full mr-2"></span>
+                            <span>Prototyping</span>
+                        </div>
+                        <div class="px-4 py-2 bg-gray-100 rounded-full flex items-center">
+                            <span class="w-2 h-2 bg-[#1A1A2E] rounded-full mr-2"></span>
+                            <span>Interaction Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 md:px-12 lg:px-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h4 class="text-lg text-[#6C4DF6] mb-2">MY EXPERTISE</h4>
+                <h2 class="text-3xl md:text-4xl font-bold">Skills & Tools</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Design Skills</h3>
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>UI Design</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress progress-90"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>UX Research</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress progress-85"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Interaction Design</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress progress-80"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Prototyping</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress progress-75"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Design Tools</h3>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-lg bg-white shadow-md flex items-center justify-center">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/99f374ac-c5f3-4697-914d-03cf40813fea.png" alt="Adobe XD logo" class="w-6 h-6" />
+                            </div>
+                            <span>Adobe XD</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-lg bg-white shadow-md flex items-center justify-center">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8cf392a0-1902-4e0f-95c2-91a9c1febc11.png" alt="Figma logo" class="w-6 h-6" />
+                            </div>
+                            <span>Figma</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-lg bg-white shadow-md flex items-center justify-center">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3b5ba81a-bea1-4bd0-a167-f57992de7aa0.png" alt="Sketch logo" class="w-6 h-6" />
+                            </div>
+                            <span>Sketch</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-lg bg-white shadow-md flex items-center justify-center">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3da278b6-8352-4930-a3e9-9b65754bc1f8.png" alt="Photoshop logo" class="w-6 h-6" />
+                            </div>
+                            <span>Photoshop</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-lg bg-white shadow-md flex items-center justify-center">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e490e721-62c0-4f28-a172-46d2b994d0bc.png" alt="Illustrator logo" class="w-6 h-6" />
+                            </div>
+                            <span>Illustrator</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-lg bg-white shadow-md flex items-center justify-center">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8e670599-efe0-4890-97c7-dbeb0f50e7de.png" alt="InVision logo" class="w-6 h-6" />
+                            </div>
+                            <span>InVision</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Work Section -->
+    <section id="work" class="py-20 px-4 md:px-12 lg:px-24 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h4 class="text-lg text-[#6C4DF6] mb-2">MY PORTFOLIO</h4>
+                <h2 class="text-3xl md:text-4xl font-bold">Recent Projects</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card relative">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/642f80e5-76a6-45e8-a164-40c8b7ee233b.png" alt="Mobile banking app interface with clean design and financial graphs" class="project-image w-full h-full object-cover" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">FinTech Mobile App</h3>
+                        <p class="text-gray-600 mb-4">Mobile banking solution with intuitive financial tracking</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">UI Design</span>
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">Mobile</span>
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">FinTech</span>
+                        </div>
+                    </div>
+                    <a href="#" class="project-overlay">
+                        <h3 class="text-2xl font-bold text-white">FinTech Mobile App</h3>
+                        <p class="text-gray-300 mb-4">Redesigned the mobile banking experience</p>
+                        <button class="self-start px-4 py-2 bg-white text-[#6C4DF6] rounded-full font-medium">View Case Study</button>
+                    </a>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card relative">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/af34eac1-9d0f-4d71-9b72-bf11ad174839.png" alt="E-commerce dashboard with product listings and analytics" class="project-image w-full h-full object-cover" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">E-commerce Dashboard</h3>
+                        <p class="text-gray-600 mb-4">Merchant dashboard for small businesses</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">UI Design</span>
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">Web</span>
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">Dashboard</span>
+                        </div>
+                    </div>
+                    <a href="#" class="project-overlay">
+                        <h3 class="text-2xl font-bold text-white">E-commerce Dashboard</h3>
+                        <p class="text-gray-300 mb-4">Designed a comprehensive merchant dashboard</p>
+                        <button class="self-start px-4 py-2 bg-white text-[#6C4DF6] rounded-full font-medium">View Case Study</button>
+                    </a>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card relative">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/76796ee2-fce2-478f-8052-2967b087b72a.png" alt="Health app interface with fitness tracking and wellness metrics" class="project-image w-full h-full object-cover" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Health & Wellness App</h3>
+                        <p class="text-gray-600 mb-4">Personal health tracking and insights</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">UX Research</span>
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">Mobile</span>
+                            <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">Health Tech</span>
+                        </div>
+                    </div>
+                    <a href="#" class="project-overlay">
+                        <h3 class="text-2xl font-bold text-white">Health & Wellness App</h3>
+                        <p class="text-gray-300 mb-4">Designed a health tracking experience</p>
+                        <button class="self-start px-4 py-2 bg-white text-[#6C4DF6] rounded-full font-medium">View Case Study</button>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <button class="px-8 py-3 border-2 border-[#6C4DF6] text-[#6C4DF6] rounded-full font-medium hover:bg-[#6C4DF6] hover:text-white transition-all">
+                    View All Projects
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="py-20 px-4 md:px-12 lg:px-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h4 class="text-lg text-[#6C4DF6] mb-2">FEEDBACK</h4>
+                <h2 class="text-3xl md:text-4xl font-bold">What Clients Say</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c5516905-e358-48eb-a4e5-e5dd5b542546.png" alt="Client headshot for testimonial - middle-aged executive" class="w-12 h-12 rounded-full mr-4" />
+                        <div>
+                            <h4 class="font-bold">Michael J.</h4>
+                            <p class="text-sm text-gray-500">CEO, Tech Company</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        "Working with this designer was a game-changer for our product. They completely transformed our user experience and helped us achieve a 35% increase in engagement."
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f858f1f4-db33-4fea-903b-1bd3d292a716.png" alt="Client headshot for testimonial - young startup founder" class="w-12 h-12 rounded-full mr-4" />
+                        <div>
+                            <h4 class="font-bold">Sarah L.</h4>
+                            <p class="text-sm text-gray-500">Founder, Startup</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        "From research to final implementation, the attention to detail was impressive. Every design decision was backed by solid UX principles."
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5bc929f4-5027-465b-96a7-2c14668f6294.png" alt="Client headshot for testimonial - senior product manager" class="w-12 h-12 rounded-full mr-4" />
+                        <div>
+                            <h4 class="font-bold">David K.</h4>
+                            <p class="text-sm text-gray-500">Product Manager</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        "The designs were not just beautiful but solved real user problems we didn't even know existed. Truly user-centered approach."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 md:px-12 lg:px-24 bg-gray-900 text-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h4 class="text-lg text-[#F4C518] mb-2">GET IN TOUCH</h4>
+                <h2 class="text-3xl md:text-4xl font-bold">Let's Work Together</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                    <p class="mb-8">
+                        Have a project in mind or want to chat about design? Feel free to reach out through any of these channels.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-[#6C4DF6] rounded-lg">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22 16.92V19.92C22 20.4701 21.55 20.92 21 20.92H19C12.5 20.92 3 14.92 3 6.92002C3 5.37002 4.5 4.92001 5.5 4.92001H8.5C9.05 4.92001 9.5 5.37002 9.5 5.92002V10.91C9.5 11.46 9.13 11.83 8.58 11.91L6.5 12.21C7.88 15.34 10.2 17.22 13.79 17.87L14.41 15.5C14.5 14.9 14.87 14.5 15.5 14.5H19C20.1 14.5 22 15.28 22 16.92Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-[#FF4D4D] rounded-lg">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M22 6L12 13L2 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p>hello@designer.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-[#F4C518] rounded-lg">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8 3H16C17.6569 3 19 4.34315 19 6V7.5C19 8.32843 18.3284 9 17.5 9H6.5C5.67157 9 5 8.32843 5 7.5V6C5 4.34315 6.34315 3 8 3Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16 21H8C6.34315 21 5 19.6569 5 18V16.5C5 15.6716 5.67157 15 6.5 15H17.5C18.3284 15 19 15.6716 19 16.5V18C19 19.6569 17.6569 21 16 21Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Location</h4>
+                                <p>San Francisco, CA</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12">
+                        <h4 class="font-bold mb-4">Follow Me</h4>
+                        <div class="flex gap-4">
+                            <a href="#" class="p-3 bg-gray-700 rounded-full hover:bg-[#6C4DF6] transition-all">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.5 6.5H18.5C19.0523 6.5 19.5 6.94772 19.5 7.5V18.5C19.5 19.0523 19.0523 19.5 18.5 19.5H5.5C4.94772 19.5 4.5 19.0523 4.5 18.5V7.5C4.5 6.94772 4.94772 6.5 5.5 6.5H6.5M17.5 6.5V4.5C17.5 3.94772 17.0523 3.5 16.5 3.5H7.5C6.94772 3.5 6.5 3.94772 6.5 4.5V6.5M17.5 6.5H6.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 11.5V16.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M14.5 14.5H9.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="p-3 bg-gray-700 rounded-full hover:bg-[#6C4DF6] transition-all">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 17.5V10.5M14.5 12.5H9.5M5.5 5.5H18.5C19.0523 5.5 19.5 5.94772 19.5 6.5V17.5C19.5 18.0523 19.0523 18.5 18.5 18.5H5.5C4.94772 18.5 4.5 18.0523 4.5 17.5V6.5C4.5 5.94772 4.94772 5.5 5.5 5.5Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="p-3 bg-gray-700 rounded-full hover:bg-[#6C4DF6] transition-all">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 21.5C17.2467 21.5 21.5 17.2467 21.5 12C21.5 6.75329 17.2467 2.5 12 2.5C6.75329 2.5 2.5 6.75329 2.5 12C2.5 17.2467 6.75329 21.5 12 21.5Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.5 11.5V16.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15.5 11.5V16.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.5 13.5C8.5 12.5 9.4 11.5 12 11.5C14.6 11.5 15.5 12.5 15.5 13.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="p-3 bg-gray-700 rounded-full hover:bg-[#6C4DF6] transition-all">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 2.5H7C4.51472 2.5 2.5 4.51472 2.5 7V17C2.5 19.4853 4.51472 21.5 7 21.5H17C19.4853 21.5 21.5 19.4853 21.5 17V7C21.5 4.51472 19.4853 2.5 17 2.5Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 16.5C14.2091 16.5 16 14.7091 16 12.5C16 10.2909 14.2091 8.5 12 8.5C9.79086 8.5 8 10.2909 8 12.5C8 14.7091 9.79086 16.5 12 16.5Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M17.5 7.5V7.501" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block mb-2">Full Name</label>
+                            <input type="text" id="name" class="w-full bg-transparent border-0 border-b-2 border-gray-700 contact-input focus:border-[#6C4DF6] focus:outline-none py-2 px-1" placeholder="Enter your name" required />
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full bg-transparent border-0 border-b-2 border-gray-700 contact-input focus:border-[#6C4DF6] focus:outline-none py-2 px-1" placeholder="Enter your email" required />
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full bg-transparent border-0 border-b-2 border-gray-700 contact-input focus:border-[#6C4DF6] focus:outline-none py-2 px-1" placeholder="Subject" required />
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full bg-transparent border-0 border-b-2 border-gray-700 contact-input focus:border-[#6C4DF6] focus:outline-none py-2 px-1" placeholder="Your message here" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="px-8 py-3 bg-gradient-to-r from-[#6C4DF6] to-[#FF4D4D] text-white rounded-full font-medium hover:shadow-lg transition-all">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-12 px-4 md:px-12 lg:px-24 bg-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold gradient-text">DESIGNER.</a>
+                    <p class="text-gray-400 mt-2">© 2023 All Rights Reserved</p>
+                </div>
+                
+                <div class="flex space-x-8">
+                    <a href="#" class="text-gray-400 hover:text-white transition-all">Home</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-all">About</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-all">Work</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-all">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Custom cursor effect
+        const cursor = document.querySelector('.cursor');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
+        });
+        
+        // Make cursor smaller when hovering on clickable elements
+        document.querySelectorAll('a, button, input, textarea, .project-card').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.style.width = '15px';
+                cursor.style.height = '15px';
+                cursor.style.opacity = '0.7';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.style.width = '30px';
+                cursor.style.height = '30px';
+                cursor.style.opacity = '1';
+            });
+        });
+        
+        // Animate skill bars on scroll
+        const animateSkillBars = () => {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const workSection = document.getElementById('skills');
+            const sectionPosition = workSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2;
+            
+            if (sectionPosition < screenPosition) {
+                skillBars.forEach(bar => {
+                    const width = bar.classList.contains('progress-90') ? '90%' :
+                                  bar.classList.contains('progress-85') ? '85%' :
+                                  bar.classList.contains('progress-80') ? '80%' :
+                                  '75%';
+                    bar.style.width = width;
+                });
+            }
+        };
+        
+        window.addEventListener('scroll', animateSkillBars);
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('button[class="md:hidden text-2xl"]');
+        const mobileMenu = document.querySelector('.hidden.md\\:flex.space-x-12');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+            mobileMenu.classList.toggle('flex-col');
+            mobileMenu.classList.toggle('absolute');
+            mobileMenu.classList.toggle('top-20');
+            mobileMenu.classList.toggle('left-0');
+            mobileMenu.classList.toggle('w-full');
+            mobileMenu.classList.toggle('bg-white');
+            mobileMenu.classList.toggle('py-4');
+            mobileMenu.classList.toggle('px-8');
+            mobileMenu.classList.toggle('space-y-4');
+            mobileMenu.classList.toggle('space-x-0');
+        });
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
