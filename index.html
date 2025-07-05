@@ -337,6 +337,7 @@
             padding: 1.5rem;
             line-height: 1.6;
             color: #ccc;
+            text-align: justify;
         }
 
         .about-paragraph {
@@ -649,7 +650,7 @@
         /* Base Styles */
         #education {
             padding: 2rem 1rem;
-            background-color: #f9f9f9;
+
         }
 
         .education-container {
@@ -661,7 +662,7 @@
             text-align: center;
             font-size: clamp(1.8rem, 5vw, 2.5rem);
             margin-bottom: 2.5rem;
-            color: #2c3e50;
+
             position: relative;
         }
 
@@ -689,12 +690,19 @@
             bottom: 0;
             left: 15px;
             width: 2px;
-            background: #e0e0e0;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
         }
 
         .education-item {
             position: relative;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(30, 30, 47, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
         }
 
         .timeline-dot {
@@ -710,7 +718,7 @@
         }
 
         .education-content {
-            background: #fff;
+            background: rgba(30, 30, 47, 0.6);
             padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
@@ -722,11 +730,12 @@
         }
 
         .education-year {
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
-            margin-bottom: 0.8rem;
-            color: #8338ec;
-            font-weight: 600;
+            gap: 0.5rem;
         }
 
         .education-year i {
@@ -741,19 +750,19 @@
         .education-content h3 {
             font-size: clamp(1.1rem, 4vw, 1.3rem);
             margin-bottom: 0.5rem;
-            color: #2c3e50;
+            color: #ccc;
         }
 
         .institution {
             font-size: clamp(0.95rem, 3vw, 1.1rem);
-            color: #555;
+            color: #ccc;
             margin-bottom: 0.5rem;
             font-weight: 500;
         }
 
         .specialization {
             font-size: clamp(0.9rem, 3vw, 1rem);
-            color: #666;
+            color: #ccc;
             line-height: 1.5;
         }
 
