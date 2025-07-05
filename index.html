@@ -332,14 +332,74 @@
         }
 
         .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #ccc;
-        }
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    line-height: 1.6;
+    color: #ccc;
+}
 
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
+.about-paragraph {
+    margin-bottom: 1.5rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    line-height: 1.7;
+}
+
+/* Small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .about-text {
+        padding: 1rem;
+    }
+    
+    .about-paragraph {
+        margin-bottom: 1.2rem;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
+
+/* Medium devices (tablets, 600px-900px) */
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+    .about-text {
+        padding: 1.25rem 1.5rem;
+    }
+    
+    .about-paragraph {
+        margin-bottom: 1.3rem;
+    }
+}
+
+/* Large devices (laptops/desktops, 900px and up) */
+@media only screen and (min-width: 900px) {
+    .about-text {
+        padding: 2rem;
+    }
+    
+    .about-paragraph {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+        line-height: 1.7;
+    }
+}
+
+/* Animation classes */
+.animate {
+    animation-duration: 0.6s;
+    animation-fill-mode: both;
+}
+
+.fade-in {
+    animation-name: fadeIn;
+}
+
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
         .profile-image {
             position: relative;
@@ -1428,16 +1488,11 @@ document.addEventListener('DOMContentLoaded', function() {
     <section id="about">
         <h2 class="section-title animate fade-in">About Me</h2>
         <div class="about-content">
-            <div class="about-text animate fade-in delay-1">
-                <p>I'm a passionate UI/UX Designer with over 3 years of experience crafting digital experiences that
-                    users love. My approach combines aesthetic sensibility with functional design thinking to create
-                    interfaces that are both beautiful and intuitive.</p>
-                <p>With a strong foundation in front-end development, I bridge the gap between design and
-                    implementation, ensuring pixel-perfect execution of every project. I thrive on solving complex user
-                    problems through thoughtful design and clean code.</p>
-                <p>When I'm not designing or coding, you'll find me exploring new design trends, contributing to
-                    open-source projects, or mentoring aspiring designers.</p>
-            </div>
+<div class="about-text animate fade-in delay-1">
+    <p class="about-paragraph">I'm a passionate UI/UX Designer with over 3 years of experience crafting digital experiences that users love. My approach combines aesthetic sensibility with functional design thinking to create interfaces that are both beautiful and intuitive.</p>
+    <p class="about-paragraph">With a strong foundation in front-end development, I bridge the gap between design and implementation, ensuring pixel-perfect execution of every project. I thrive on solving complex user problems through thoughtful design and clean code.</p>
+    <p class="about-paragraph">When I'm not designing or coding, you'll find me exploring new design trends, contributing to open-source projects, or mentoring aspiring designers.</p>
+</div>
             <div class="profile-image animate fade-in delay-2">
                 <!-- Replace with your actual image -->
                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
